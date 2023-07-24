@@ -1,0 +1,46 @@
+name: Veracode Static Code Analysis
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create zip archive
+        run: zip -r veracode.zip ./bin -x .git/**\* node_modules/**\* dist/**\* test/**\*
+      - uses: actions/upload-artifact@v3
+        with:
+          name: veracode-artifact
+          path: veracode.zip
+
+  policy_scan:
+    needs: build
+    name: policy scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: get archive
+        uses: actions/download-artifact@v3
+        with:
+          name: veracode-artifact
+          path: ./veracode_artifact_directory
+
+      - name: Get the name of the downloaded files
+        run: |
+          artifact_file=$(ls -1 ./veracode_artifact_directory | head -n 1)
+          echo "veracode_artifact=$artifact_file" >> $GITHUB_ENV
+
+      - name: Veracode Policy Scan
+        uses: vincent-deng/veracode-policy-scan-action@main
+        with:
+          vid: '${{ secrets.API_ID }}'
+          vkey: '${{ secrets.API_KEY }}'
+          appname: 'veracode-github-policy-scan-action'
+          version: '${{ github.run_id }}'
+          filepath: ./veracode_artifact_directory/${{ env.veracode_artifact }}
