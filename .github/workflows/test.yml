@@ -41,6 +41,6 @@ jobs:
         with:
           vid: '${{ secrets.API_ID }}'
           vkey: '${{ secrets.API_KEY }}'
-          appname: 'veracode-github-policy-scan-action'
+          appname: 'verademo-dotnet'
           version: '${{ github.run_id }}'
           filepath: ./veracode_artifact_directory/${{ env.veracode_artifact }}
