@@ -43,5 +43,6 @@ jobs:
           vkey: '${{ secrets.API_KEY }}'
           appname: 'verademo1234'
           version: '${{ github.run_id }}'
+          createprofile: true
           filepath: ./veracode_artifact_directory/${{ env.veracode_artifact }}
           policy: VeraDemo Policy
