@@ -44,4 +44,4 @@ jobs:
           appname: 'verademo-dotnet'
           version: '${{ github.run_id }}'
           filepath: ./veracode_artifact_directory/${{ env.veracode_artifact }}
-          include: Antlr3.Runtime.dll, Verademo-dotnet.dll
+          include: Verademo-dotnet.dll
