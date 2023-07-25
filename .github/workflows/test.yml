@@ -47,4 +47,4 @@ jobs:
           filepath: ./veracode_artifact_directory/${{ env.veracode_artifact }}
           include: Verademo-dotnet.dll
           policy: VeraDemo Policy
-          scantimeout: 2
+          scantimeout: 20
