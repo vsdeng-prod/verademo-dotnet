@@ -45,3 +45,4 @@ jobs:
           version: '${{ github.run_id }}'
           filepath: ./veracode_artifact_directory/${{ env.veracode_artifact }}
           include: Verademo-dotnet.dll
+          policy: VeraDemo Policy
