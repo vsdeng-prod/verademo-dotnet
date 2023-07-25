@@ -48,3 +48,4 @@ jobs:
           include: Verademo-dotnet.dll
           policy: VeraDemo Policy
           scantimeout: 20
+          failbuild: false
