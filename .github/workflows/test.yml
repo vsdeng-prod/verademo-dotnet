@@ -42,8 +42,9 @@ jobs:
           vid: '${{ secrets.API_ID }}'
           vkey: '${{ secrets.API_KEY }}'
           appname: 'verademo123'
-          createprofile: false
+          createprofile: true
           version: '${{ github.run_id }}'
           filepath: ./veracode_artifact_directory/${{ env.veracode_artifact }}
           include: Verademo-dotnet.dll
           policy: VeraDemo Policy
+          scantimeout: 2
