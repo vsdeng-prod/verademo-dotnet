@@ -7,7 +7,7 @@ Clone or connect this repo to Azure Dev Ops. Create a Pipeline using included ex
  
 Setup API ID and Key in Pipeline Variables –
 - VERACODE_API_ID
-- VERACODE_API_KEY 
+- VERACODE_API_KEY  
 
 Once build completes you can download results.json from build summary screen or view them in the console output for the Pipeline scanner step.  
 
